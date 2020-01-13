@@ -4,15 +4,16 @@
 import requests
 import json
 from requests_oauthlib import OAuth1Session, OAuth1
+import random
 
 def getTweet():
     
-    tweets = getTweetTextsFor("Yomiuri_Online")
+    tweets = getTweetTextsFor("YahooNewsTopics")
 
     return getRelatedTweets(tweets)
 
 def getTweetTextsFor(name):
-    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={0}&count=5".format(name)
+    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={0}&count=10".format(name)
 
     oauth = OAuth1(
     'JolGq4w2PqMWCfDr4szMLcupZ',
@@ -28,4 +29,4 @@ def getTweetTextsFor(name):
     return texts
 
 def getRelatedTweets(tweets):
-    return tweets[0:2]
+    return random.sample(tweets,2)

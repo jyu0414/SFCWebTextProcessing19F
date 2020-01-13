@@ -1,9 +1,10 @@
 #生成したフェイクニュースをツイート
 import requests
 from requests_oauthlib import OAuth1Session, OAuth1
+import urllib.parse
 
 def postTweet(sentence):
-    url = "https://api.twitter.com/1.1/statuses/update.json?status=sasasasa"
+    url = "https://api.twitter.com/1.1/statuses/update.json?status={0}".format(urllib.parse.quote(sentence))
 
     oauth = OAuth1(
     'JolGq4w2PqMWCfDr4szMLcupZ',
@@ -12,5 +13,4 @@ def postTweet(sentence):
     'b4K4lUXSWcmcXDI5QnsdBA9xVwpSAcLzrY6lQ8ozlXKtm'
     )
 
-    response = requests.request("POST", url, auth=oauth)
-    print(response.text.encode('utf8'))
+    #response = requests.request("POST", url, auth=oauth)
