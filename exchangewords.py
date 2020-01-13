@@ -1,31 +1,22 @@
 #Nemoto
 #②の品詞が一致する場所に①からランダムで単語を入れ替える→Stringを返す
-from random import randint as ran
+import random
 
 def exchangeWords(categorizedWords,labeledSentence):
-    size = len(labeledSentence)
+    
+    print(categorizedWords)
+    print(labeledSentence)
 
-    target = ran(0, size-1)
-    list_cate = categorizedWords[labeledSentence[target][1]]
-    size_cate = len(list_cate)-1
+    outputSentence = ""
 
-    change_num = ran(0, size_cate)
-    change_str = list_cate[change_num]
-
-    exchangeSentence = ''
-    for x in range(size):
-        strin = labeledSentence[x][0]
-        if strin == labeledSentence[target][0]: #同じ単語はすべて入れ替える
-            exchangeSentence += change_str
+    for part in labeledSentence:
+        if type(part) == tuple:
+            if part[0] in categorizedWords:
+                outputSentence += random.choice(categorizedWords[part[0]])
+            else:
+                outputSentence += part[1]
         else:
-            exchangeSentence += labeledSentence[x][0]
-
-    # print(target, change_num)
-    return exchangeSentence
-
-if __name__ == '__main__':
-    categorizedWords = {"固有名詞":["あ","い"],"人名":["う","え"]}
-    labeledSentence = [("あ","固有名詞"),("い","人名")]
-    print(exchangeWords(categorizedWords, labeledSentence))
+            outputSentence += part
+    return outputSentence
 
 
