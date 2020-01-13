@@ -13,9 +13,8 @@ def categorizeWords(sentence):
     while nodes:
         if nodes.feature.split(",")[1] == "固有名詞":
             if nodes.feature.split(",")[2] in dict:
-                dict[nodes.feature.split(",")[2]].append(nodes.feature.split(",")[6])
+                dict[nodes.feature.split(",")[2]].append(nodes.surface)
             else:
-                dict[nodes.feature.split(",")[2]] = [nodes.feature.split(",")[6]]
+                dict[nodes.feature.split(",")[2]] = [nodes.surface]
         nodes = nodes.next
-   
     return dict

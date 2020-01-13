@@ -11,12 +11,16 @@ def exchangeWords(categorizedWords,labeledSentence):
 
     for part in labeledSentence:
         if type(part) == tuple:
-            if part[0] in categorizedWords:
-                outputSentence += random.choice(categorizedWords[part[0]])
-            else:
-                outputSentence += part[1]
+            outputSentence += random.choice(flatten(categorizedWords.values()))
+            #if part[0] in categorizedWords:
+                #random.choice(categorizedWords[part[1]])
+            #else:
+                #outputSentence += part[0]
         else:
             outputSentence += part
     return outputSentence
+
+def flatten(nested_list):
+    return [e for inner_list in nested_list for e in inner_list]
 
 

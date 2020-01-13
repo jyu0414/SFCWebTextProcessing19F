@@ -6,18 +6,18 @@ def labeling(sentence):
     mecab = MeCab.Tagger()
     mecab.parse('')
     nodes = mecab.parseToNode(sentence)
-
+    print(sentence)
     list = []
     while nodes:
         if nodes.feature.split(",")[0] == "BOS/EOS":
             pass
         elif nodes.feature.split(",")[1] == "固有名詞":
-            list.append((nodes.feature.split(",")[6],nodes.feature.split(",")[2]))
+            list.append((nodes.surface,nodes.feature.split(",")[2]))
         else:
             if len(list) == 0 or type(list[-1]) == tuple:
-                list.append(nodes.feature.split(",")[6])
+                list.append(nodes.surface)
             else:
-                list[-1] += nodes.feature.split(",")[6]
+                list[-1] += nodes.surface
 
         nodes = nodes.next
     return list
