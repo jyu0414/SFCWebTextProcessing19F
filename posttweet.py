@@ -13,4 +13,4 @@ def postTweet(sentence):
     'b4K4lUXSWcmcXDI5QnsdBA9xVwpSAcLzrY6lQ8ozlXKtm'
     )
 
-    #response = requests.request("POST", url, auth=oauth)
+    response = requests.request("POST", url, auth=oauth)

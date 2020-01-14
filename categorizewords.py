@@ -11,7 +11,7 @@ def categorizeWords(sentence):
     dict = {}
 
     while nodes:
-        if nodes.feature.split(",")[1] == "固有名詞":
+        if nodes.feature.split(",")[1] == "固有名詞" and nodes.surface != "*":
             if nodes.feature.split(",")[2] in dict:
                 dict[nodes.feature.split(",")[2]].append(nodes.surface)
             else:
