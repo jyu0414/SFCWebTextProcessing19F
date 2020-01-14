@@ -14,3 +14,5 @@ def postTweet(sentence):
     )
 
     response = requests.request("POST", url, auth=oauth)
+
+    print(response.text.encode('utf8'))
